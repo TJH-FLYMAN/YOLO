@@ -36,12 +36,14 @@ class DecodeBox(nn.Module):
         #-----------------------------------------------#
         #   输入为416x416时
         #   stride_h = stride_w = 32、16、8
+        #   img_size/feature_size  =   stride 
         #   计算步长
         #-----------------------------------------------#
         stride_h = self.img_size[1] / input_height
         stride_w = self.img_size[0] / input_width
         #-------------------------------------------------#
         #   此时获得的scaled_anchors大小是相对于特征层的
+        #   anchor尺寸是相对于418 图像尺寸 
         #-------------------------------------------------#
         scaled_anchors = [(anchor_width / stride_w, anchor_height / stride_h) for anchor_width, anchor_height in self.anchors]
 
